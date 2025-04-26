@@ -1,4 +1,3 @@
-import React from 'react';
 
 function Home() {
     const githubLink = "https://github.com/AFE123x";

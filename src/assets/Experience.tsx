@@ -1,8 +1,31 @@
 import { useInView } from 'react-intersection-observer'; // Import the hook
 
+// --- Type Definitions ---
+interface SkillData {
+  languages: string[];
+  frameworksLibs: string[];
+  toolsDatabases: string[];
+  // Add other categories as needed, ensuring keys match keys in skillsData
+  [key: string]: string[]; // Index signature to allow string keys
+}
+
+interface ExperienceData {
+  id: number;
+  title: string;
+  company: string;
+  location: string;
+  startDate: string;
+  endDate: string;
+  description: string[];
+}
+
+interface ExperienceItemProps {
+  exp: ExperienceData; // Use the ExperienceData interface
+}
+
 // --- Skills Data ---
 // Define your skills, grouped by category. Replace with your actual skills.
-const skillsData = {
+const skillsData: SkillData = { // Add type annotation
   languages: ['JavaScript', 'Rust', 'C', 'C++', 'x86 Assembly', 'RISC-V Assembly', 'Verilog', 'HTML/CSS'],
   frameworksLibs: ['React', 'Node.js', 'Express', 'Flask', 'Spring Boot', 'Bootstrap', 'Tailwind CSS'],
   toolsDatabases: ['Git & GitHub', 'Docker', 'REST APIs', 'PostgreSQL', 'MongoDB', 'Firebase'],
@@ -11,7 +34,7 @@ const skillsData = {
 // --- Experience Data ---
 // Define your experience data here.
 // Make sure to replace this sample data with your actual experience.
-const experiences = [
+const experiences: ExperienceData[] = [ // Add type annotation (array of ExperienceData)
   {
     id: 1,
     title: 'Teaching Assistant',
@@ -56,8 +79,8 @@ const experiences = [
 ];
 
 // --- Single Experience Item Component (for Animation) ---
-// We create a sub-component to cleanly apply the useInView hook
-const ExperienceItem = ({ exp }) => {
+// Added Type Annotation for props { exp }
+const ExperienceItem = ({ exp }: ExperienceItemProps) => {
   const { ref, inView } = useInView({
     triggerOnce: true, // Animate only once when it comes into view
     threshold: 0.1, // Trigger when 10% of the item is visible
@@ -66,7 +89,7 @@ const ExperienceItem = ({ exp }) => {
   return (
     <div
       ref={ref}
-      key={exp.id}
+      // key is no longer needed here as it's applied in the parent map
       className={`experience-item mb-4 border-start border-primary border-3 ps-4 ${
         inView ? 'is-visible' : ''
       }`}
@@ -77,7 +100,8 @@ const ExperienceItem = ({ exp }) => {
         {exp.startDate} - {exp.endDate} | {exp.location}
       </p>
       <ul className="list-unstyled">
-        {exp.description.map((point, index) => (
+        {/* Added Type Annotations for map parameters */}
+        {exp.description.map((point: string, index: number) => (
           <li key={index} className="mb-1">
             {point}
           </li>
@@ -97,6 +121,7 @@ const Experience = () => {
         <div className="col-md-10 col-lg-8 mx-auto">
           {experiences.length > 0 ? (
             experiences.map((exp) => (
+              // Pass the whole exp object, key is correctly placed here
               <ExperienceItem key={exp.id} exp={exp} />
             ))
           ) : (
@@ -109,10 +134,12 @@ const Experience = () => {
         <h2 className="text-center mb-4">Technical Skills</h2>
         <div className="row justify-content-center">
            <div className="col-lg-10">
+                 {/* Type inference works well here now due to SkillData type on skillsData */}
                 {Object.entries(skillsData).map(([category, skillsList]) => (
                   <div key={category} className="mb-4">
                     <h4 className="text-center text-md-start mb-3">{formatCategoryTitle(category)}</h4>
                     <div className="d-flex flex-wrap justify-content-center justify-content-md-start">
+                     {/* Type inference should correctly identify skill as string */}
                       {skillsList.map((skill) => (
                         <span key={skill} className="badge bg-secondary fs-6 fw-normal me-2 mb-2 px-3 py-2">
                            {skill}
@@ -125,7 +152,8 @@ const Experience = () => {
         </div>
       </div>
 
-      <style jsx>{`
+      {/* Removed the 'jsx' prop from the style tag */}
+      <style>{`
         .experience-item {
           opacity: 0;
           transform: translateY(20px); /* Start slightly below */
@@ -151,8 +179,9 @@ const Experience = () => {
   );
 };
 
-// Helper function to format category keys (e.g., "frameworksLibs" -> "Frameworks & Libs")
-function formatCategoryTitle(key) {
+// Helper function to format category keys
+// Added type annotation for parameter 'key' and return type 'string'
+function formatCategoryTitle(key: string): string {
     const words = key.replace(/([A-Z])/g, ' $1').trim(); // Add space before caps
     return words.charAt(0).toUpperCase() + words.slice(1).replace(/Libs/, '& Libs'); // Capitalize and format 'Libs'
 }
