@@ -3,7 +3,7 @@
 // import viteLogo from '/vite.svg';
 import Navbar from './assets/Navbar'
 import Home from   './assets/Home'
-import Experience from './assets/Experience';
+import Experience from './assets/experience';
 import Projects from './assets/Projects';
 import Contact from './assets/Contact';
 function App() {
