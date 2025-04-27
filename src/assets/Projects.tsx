@@ -35,11 +35,11 @@ const Projects = () => {
                 // --- Filtering and Mapping ---
                 // Decide which repos to show. You might not want ALL of them.
                 // Example: Filter by topic 'portfolio' or check for a description
-                const filteredRepos = repos.filter((repo: any) =>
+                const filteredRepos = repos.filter(() =>
                     // Example filter: only show repos with a description
                     // repo.description &&
                     // Example filter: only show repos with a specific topic (requires fetching topics or setting them consistently)
-                    // repo.topics?.includes('portfolio')
+                    // repo.topices?.includes('portfolio')
                     // Example: Show all for now, or implement your specific logic
                     true
                 );
