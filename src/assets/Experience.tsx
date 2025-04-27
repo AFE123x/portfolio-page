@@ -26,9 +26,9 @@ interface ExperienceItemProps {
 // --- Skills Data ---
 // Define your skills, grouped by category. Replace with your actual skills.
 const skillsData: SkillData = { // Add type annotation
-  languages: ['JavaScript', 'Rust', 'C', 'C++', 'x86 Assembly', 'RISC-V Assembly', 'Verilog', 'HTML/CSS'],
-  frameworksLibs: ['React', 'Node.js', 'Express', 'Flask', 'Spring Boot', 'Bootstrap', 'Tailwind CSS'],
-  toolsDatabases: ['Git & GitHub', 'Docker', 'REST APIs', 'PostgreSQL', 'MongoDB', 'Firebase'],
+  languages: ['JavaScript', 'Rust', 'C', 'C++', 'x86 Assembly', 'RISC-V Assembly', 'Verilog', 'HTML', 'CSS'],
+  frameworksLibs: ['React', 'Node.js', 'Express', 'Bootstrap', 'Tailwind CSS'],
+  toolsDatabases: ['Git & GitHub', 'REST APIs', 'PostgreSQL', 'MongoDB'],
 };
 
 // --- Experience Data ---
@@ -39,40 +39,52 @@ const experiences: ExperienceData[] = [ // Add type annotation (array of Experie
     id: 1,
     title: 'Teaching Assistant',
     company: 'Rutgers University',
-    location: 'Piscataway, NJ', // Example: Use a real location or 'Remote'
+    location: 'Piscataway, NJ',
     startDate: 'January 2024',
     endDate: 'Present',
     description: [
-      'Graded assignments and provided constructive feedback for Computer Architecture.',
-      'Led weekly review sessions, clarifying complex topics for ~30 students.',
-      'Assisted professor with course material preparation and management.',
+      '- Supported the instructor in course development by creating assignments, leading weekly recitations, and grading student work.',
+      '- Facilitated and encouraged student discussions to enhance classroom engagement and understanding.',
+      '- Helped prepare and manage course materials in collaboration with the professor. For instance, setting up a server for an assignment where students defuse a binary bomb.',
     ],
   },
   {
     id: 2,
-    title: 'Firmware Engineer',
-    company: 'Tacodi',
-    location: 'Burlington, New Jersey', // Example: Use a real location
-    startDate: 'June 2024',
-    endDate: 'August 2024',
+    title: 'Vice President',
+    company: 'Rutgers Institute for Electrical and Electronics Engineering - N2E division',
+    location: 'Piscataway, NJ',
+    startDate: 'September 2024',
+    endDate: 'May 2025',
     description: [
-      "- Enhanced the autofocus functionality within a communications device's kernel, measured by a 30% improvement in video feed response time, by developing efficient kernel modules using bare-metal programming and mathematical models, rather than using high level libraries like opencv.",
-      "- Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum vero temporibus impedit, magnam, consequuntur omnis quod corporis, molestias quae magni repellendus aliquam illum! Eligendi unde dicta delectus vero mollitia. Eos!",
-      "- Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum vero temporibus impedit, magnam, consequuntur omnis quod corporis, molestias quae magni repellendus aliquam illum! Eligendi unde dicta delectus vero mollitia. Eos!",
-
+      '- Served as Vice president for an organization that teaches students to code.',
+      '- Led five instructors, organizing and holding different workshops. ',
+      '- Lead workshops and judged at RIEEE\'s hackathon, teaching students about android development using Kotlin.'
     ],
   },
   {
     id: 3,
-    title: 'Freelance Web Developer',
-    company: 'Self-Employed',
-    location: 'Remote',
-    startDate: 'Jan 2023',
-    endDate: 'Present',
+    title: 'Vice President',
+    company: 'Rutgers University Student Linux Users Group',
+    location: 'Piscataway, NJ',
+    startDate: 'September 2023',
+    endDate: 'May 2025',
     description: [
-      'Developed and maintained responsive websites for small businesses using React.',
-      'Collaborated with clients to define project requirements and deliverables.',
-      'Implemented custom features and integrated third-party APIs.',
+      '- Cofounded a Linux organization, providing a new outlet for computer enthusiasts and hobbyists.',
+      '- Organized various workshops, like terminal basics and 3D printing, providing an average yield of 30+ students. ',
+      '- Created multiple community-driven projects to better the Rutgers Community, like a bus stop sign using recycled screens.'
+    ],
+  },
+  {
+    id: 4,
+    title: 'Firmware Engineer',
+    company: 'Tacodi',
+    location: 'Burlington, New Jersey',
+    startDate: 'June 2024',
+    endDate: 'August 2024',
+    description: [
+      "- Developed Kernel Modules on a conference device, based on the Nvidia Jetson Orin, allowing for seamless user communication.",
+      "- Implemented features like autofocus and zoom from scratch, allowing for a 30% increase in performed compared to previous revisions.",
+      "- Recompiled the Linux kernel, removing unnecessary features, reducing memory usage by 20% and memory usage by 10%. ",
     ],
   },
   // Add more experiences here following the same structure
@@ -90,9 +102,8 @@ const ExperienceItem = ({ exp }: ExperienceItemProps) => {
     <div
       ref={ref}
       // key is no longer needed here as it's applied in the parent map
-      className={`experience-item mb-4 border-start border-primary border-3 ps-4 ${
-        inView ? 'is-visible' : ''
-      }`}
+      className={`experience-item mb-4 border-start border-primary border-3 ps-4 ${inView ? 'is-visible' : ''
+        }`}
     >
       <h5 className="fw-bold">{exp.title}</h5>
       <h6 className="text-primary mb-2">{exp.company}</h6>
@@ -133,22 +144,22 @@ const Experience = () => {
       <div className="mt-5 pt-5 border-top">
         <h2 className="text-center mb-4">Technical Skills</h2>
         <div className="row justify-content-center">
-           <div className="col-lg-10">
-                 {/* Type inference works well here now due to SkillData type on skillsData */}
-                {Object.entries(skillsData).map(([category, skillsList]) => (
-                  <div key={category} className="mb-4">
-                    <h4 className="text-center text-md-start mb-3">{formatCategoryTitle(category)}</h4>
-                    <div className="d-flex flex-wrap justify-content-center justify-content-md-start">
-                     {/* Type inference should correctly identify skill as string */}
-                      {skillsList.map((skill) => (
-                        <span key={skill} className="badge bg-secondary fs-6 fw-normal me-2 mb-2 px-3 py-2">
-                           {skill}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-                ))}
-           </div>
+          <div className="col-lg-10">
+            {/* Type inference works well here now due to SkillData type on skillsData */}
+            {Object.entries(skillsData).map(([category, skillsList]) => (
+              <div key={category} className="mb-4">
+                <h4 className="text-center text-md-start mb-3">{formatCategoryTitle(category)}</h4>
+                <div className="d-flex flex-wrap justify-content-center justify-content-md-start">
+                  {/* Type inference should correctly identify skill as string */}
+                  {skillsList.map((skill) => (
+                    <span key={skill} className="badge bg-secondary fs-6 fw-normal me-2 mb-2 px-3 py-2">
+                      {skill}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
 
@@ -182,8 +193,8 @@ const Experience = () => {
 // Helper function to format category keys
 // Added type annotation for parameter 'key' and return type 'string'
 function formatCategoryTitle(key: string): string {
-    const words = key.replace(/([A-Z])/g, ' $1').trim(); // Add space before caps
-    return words.charAt(0).toUpperCase() + words.slice(1).replace(/Libs/, '& Libs'); // Capitalize and format 'Libs'
+  const words = key.replace(/([A-Z])/g, ' $1').trim(); // Add space before caps
+  return words.charAt(0).toUpperCase() + words.slice(1).replace(/Libs/, '& Libs'); // Capitalize and format 'Libs'
 }
 
 export default Experience;
