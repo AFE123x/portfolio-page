@@ -4,7 +4,7 @@ const Contact = () => {
   const redirectUrl = "afe123x.netlify.app";
 
   return (
-    <section id="contact" className="py-5">
+    <section id="contact" className="py-5 vh-100">
       <div className="container">
         <h2 className='text-center mb-4'>Contact Me</h2>
 
