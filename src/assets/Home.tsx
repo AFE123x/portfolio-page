@@ -1,18 +1,11 @@
-
+import { ReactTyped } from "react-typed";
 function Home() {
     const githubLink = "https://github.com/AFE123x";
     const linkedinLink = "https://linkedin.com/in/arun-felix-389b03231";
-    const instagramLink = "https://www.instagram.com/afe123x/";
     const profileImageUrl = "https://media.licdn.com/dms/image/v2/D4E03AQFcxXy94vp6lw/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1729830943671?e=1750896000&v=beta&t=Lz4MFP-ndsYYldqouDyRdbssYx3b47bI22lFkX9RcQY";
 
     return (
-        // Added `min-vh-100` to make the row take full viewport height.
-        // Kept `align-items-center` to vertically center the columns within the tall row.
-        // Removed `my-4` (optional, remove if you don't want margin outside the 100vh).
-        // Kept `py-5` for internal padding top/bottom.
         <div className="row py-5 align-items-center min-vh-100" id="home">
-
-            {/* Column 1: Image, Name, Social Links */}
             <div className="col-lg-4 col-md-5 text-center mb-4 mb-md-0">
                 <img
                     src={profileImageUrl}
@@ -28,17 +21,26 @@ function Home() {
                     <a href={linkedinLink} target="_blank" rel="noopener noreferrer" className="mx-2" aria-label="LinkedIn Profile">
                         <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/81/LinkedIn_icon.svg/1024px-LinkedIn_icon.svg.png" style={{ width: '30px', height: 'auto' }} alt="LinkedIn Icon" />
                     </a>
-                    <a href={instagramLink} target="_blank" rel="noopener noreferrer" className="mx-2" aria-label="Instagram Profile">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Instagram_icon.png/1024px-Instagram_icon.png" style={{ width: '30px', height: 'auto' }} alt="Instagram Icon" />
-                    </a>
                 </div>
             </div>
-
-            {/* Column 2: Welcome Text */}
-            <div className="col-lg-8 col-md-7 text-center text-md-start ps-md-4">
-                <p className="lead">
-                    Welcome to my portfolio! My name is Arun Felix, a fourth-year Computer Science and Music double major. Here, you can find information about my skills, experience, and projects. Hopefully, you find something interesting!
-                </p>
+            <div className="col-lg-8 col-md-7 text-center"> {/* Removed text-md-start and ps-md-4, kept text-center */}
+                <ReactTyped
+                    // Add a font-size or display class here. fs-3 or display-4 are examples.
+                    // Choose the size that fits your design.
+                    className="fs-1" // Example: Using font-size utility class
+                    // OR className="display-4" // Example: Using a larger display heading class
+                    // Removed text-right
+                    strings={[
+                        "Full Stack Developer",
+                        "Software Engineer",
+                        "Embedded Systems Engineer",
+                    ]}
+                    typeSpeed={40}
+                    backSpeed={50}
+                    loop
+                >
+                    {/* ReactTyped often renders into a span by default, which text-center will center */}
+                </ReactTyped>
             </div>
         </div>
     );

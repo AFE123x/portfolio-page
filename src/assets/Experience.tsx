@@ -84,7 +84,7 @@ const experiences: ExperienceData[] = [ // Add type annotation (array of Experie
     description: [
       "- Developed Kernel Modules on a conference device, based on the Nvidia Jetson Orin, allowing for seamless user communication.",
       "- Implemented features like autofocus and zoom from scratch, allowing for a 30% increase in performed compared to previous revisions.",
-      "- Recompiled the Linux kernel, removing unnecessary features, reducing memory usage by 20% and memory usage by 10%. ",
+      "- Recompiled the Linux kernel, removing unnecessary features, reducing memory usage by 20% and CPU usage by 10%. ",
     ],
   },
   // Add more experiences here following the same structure
@@ -141,7 +141,7 @@ const Experience = () => {
         </div>
       </div>
 
-      <div className="mt-5 pt-5 border-top">
+      <div className="mt-5 pt-5 border-top vh-100">
         <h2 className="text-center mb-4">Technical Skills</h2>
         <div className="row justify-content-center">
           <div className="col-lg-10">
