@@ -37,6 +37,17 @@ const skillsData: SkillData = { // Add type annotation
 const experiences: ExperienceData[] = [ // Add type annotation (array of ExperienceData)
   {
     id: 1,
+    title: 'Vehicle Firmware Engineer (incoming)',
+    company: 'Tesla',
+    location: 'Palo Alto - CA',
+    startDate: 'September 2025',
+    endDate: 'Present',
+    description: [
+      '- incoming'
+    ],
+  },
+  {
+    id: 2,
     title: 'Teaching Assistant',
     company: 'Rutgers University',
     location: 'Piscataway, NJ',
@@ -49,7 +60,7 @@ const experiences: ExperienceData[] = [ // Add type annotation (array of Experie
     ],
   },
   {
-    id: 2,
+    id: 3,
     title: 'Vice President',
     company: 'Rutgers Institute for Electrical and Electronics Engineering - N2E division',
     location: 'Piscataway, NJ',
@@ -62,7 +73,7 @@ const experiences: ExperienceData[] = [ // Add type annotation (array of Experie
     ],
   },
   {
-    id: 3,
+    id: 4,
     title: 'Vice President',
     company: 'Rutgers University Student Linux Users Group',
     location: 'Piscataway, NJ',
@@ -75,7 +86,7 @@ const experiences: ExperienceData[] = [ // Add type annotation (array of Experie
     ],
   },
   {
-    id: 4,
+    id: 5,
     title: 'Firmware Engineer',
     company: 'Tacodi',
     location: 'Burlington, New Jersey',
