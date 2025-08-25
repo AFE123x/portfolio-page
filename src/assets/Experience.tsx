@@ -29,6 +29,8 @@ const skillsData: SkillData = { // Add type annotation
   languages: ['JavaScript', 'Rust', 'C', 'C++', 'x86 Assembly', 'RISC-V Assembly', 'Verilog', 'HTML', 'CSS'],
   frameworksLibs: ['React', 'Node.js', 'Express', 'Bootstrap', 'Tailwind CSS'],
   toolsDatabases: ['Git & GitHub', 'REST APIs', 'PostgreSQL', 'MongoDB'],
+  buildtool: ['Buildroot','make'],
+  misc: ['FreeRTOS', 'embedded linux', 'linux device drivers'],
 };
 
 // --- Experience Data ---
