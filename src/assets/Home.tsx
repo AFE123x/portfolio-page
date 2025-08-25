@@ -2,7 +2,7 @@ import { ReactTyped } from "react-typed";
 function Home() {
     const githubLink = "https://github.com/AFE123x";
     const linkedinLink = "https://linkedin.com/in/arun-felix-389b03231";
-    const profileImageUrl = "https://media.licdn.com/dms/image/v2/D4E03AQFcxXy94vp6lw/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1729830943671?e=1750896000&v=beta&t=Lz4MFP-ndsYYldqouDyRdbssYx3b47bI22lFkX9RcQY";
+    const profileImageUrl = "../1729830943671.jpeg";
 
     return (
         <div className="row py-5 align-items-center min-vh-100" id="home">
