@@ -5,6 +5,8 @@ interface SkillData {
   languages: string[];
   frameworksLibs: string[];
   toolsDatabases: string[];
+  buildtool: string[];
+  misc: string[];
   // Add other categories as needed, ensuring keys match keys in skillsData
   [key: string]: string[]; // Index signature to allow string keys
 }
