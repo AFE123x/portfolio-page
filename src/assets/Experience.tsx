@@ -41,13 +41,17 @@ const skillsData: SkillData = { // Add type annotation
 const experiences: ExperienceData[] = [ // Add type annotation (array of ExperienceData)
   {
     id: 1,
-    title: 'Vehicle Firmware Engineer (incoming)',
+    title: 'Vehicle Firmware Engineer - Audio System',
     company: 'Tesla',
     location: 'Palo Alto - CA',
     startDate: 'September 2025',
     endDate: 'Present',
     description: [
-      '- incoming'
+      '- Overhauled Unix Domain Socket interface to DBus, allowing vehicle UI to interact with audio system.',
+      '- Maintained and fixed various audio system bugs and issues, offering improvements in AMD and Intel vehicles.',
+      '- Unvestigated various pipewire xruns, tracing with ftrace.',
+      '- Worked on audio middleware for Vehicle UI, using qt-based framework.',
+      '- Implemented new vehicle feature, set to be released in milions of vehicles.',
     ],
   },
   {
@@ -56,7 +60,7 @@ const experiences: ExperienceData[] = [ // Add type annotation (array of Experie
     company: 'Rutgers University',
     location: 'Piscataway, NJ',
     startDate: 'January 2024',
-    endDate: 'Present',
+    endDate: 'May, 2025',
     description: [
       '- Supported the instructor in course development by creating assignments, leading weekly recitations, and grading student work.',
       '- Facilitated and encouraged student discussions to enhance classroom engagement and understanding.',
