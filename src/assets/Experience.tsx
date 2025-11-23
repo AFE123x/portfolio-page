@@ -117,18 +117,18 @@ const ExperienceItem = ({ exp }: ExperienceItemProps) => {
     <div
       ref={ref}
       // key is no longer needed here as it's applied in the parent map
-      className={`experience-item mb-4 border-start border-primary border-3 ps-4 ${inView ? 'is-visible' : ''
+      className={`experience-item mb-4 ${inView ? 'is-visible' : ''
         }`}
     >
-      <h5 className="fw-bold">{exp.title}</h5>
-      <h6 className="text-primary mb-2">{exp.company}</h6>
-      <p className="text-muted small mb-2">
+      <h5 className="fw-bold" style={{ color: 'var(--text-primary)' }}>{exp.title}</h5>
+      <h6 className="mb-2" style={{ color: 'var(--accent-primary)' }}>{exp.company}</h6>
+      <p className="small mb-2" style={{ color: 'var(--text-secondary)' }}>
         {exp.startDate} - {exp.endDate} | {exp.location}
       </p>
       <ul className="list-unstyled">
         {/* Added Type Annotations for map parameters */}
         {exp.description.map((point: string, index: number) => (
-          <li key={index} className="mb-1">
+          <li key={index} className="mb-1" style={{ color: 'var(--text-secondary)' }}>
             {point}
           </li>
         ))}
@@ -143,8 +143,8 @@ const Experience = () => {
   return (
     <div className="container py-5 overflow-hidden" id="experience">
       <h1 className="text-center mb-5">Experience</h1>
-      <div className="row">
-        <div className="col-md-10 col-lg-8 mx-auto">
+      <div className="row justify-content-center">
+        <div className="col-12 col-md-10 col-lg-8">
           {experiences.length > 0 ? (
             experiences.map((exp) => (
               // Pass the whole exp object, key is correctly placed here
@@ -156,18 +156,18 @@ const Experience = () => {
         </div>
       </div>
 
-      <div className="mt-5 pt-5 border-top vh-100">
-        <h2 className="text-center mb-4">Technical Skills</h2>
+      <div className="mt-5 pt-5" style={{ borderTop: '1px solid var(--border-color)' }}>
+        <h2 className="text-center mb-4" style={{ color: 'var(--text-primary)' }}>Technical Skills</h2>
         <div className="row justify-content-center">
           <div className="col-lg-10">
             {/* Type inference works well here now due to SkillData type on skillsData */}
             {Object.entries(skillsData).map(([category, skillsList]) => (
               <div key={category} className="mb-4">
-                <h4 className="text-center text-md-start mb-3">{formatCategoryTitle(category)}</h4>
+                <h4 className="text-center text-md-start mb-3" style={{ color: 'var(--text-primary)' }}>{formatCategoryTitle(category)}</h4>
                 <div className="d-flex flex-wrap justify-content-center justify-content-md-start">
                   {/* Type inference should correctly identify skill as string */}
                   {skillsList.map((skill) => (
-                    <span key={skill} className="badge bg-secondary fs-6 fw-normal me-2 mb-2 px-3 py-2">
+                    <span key={skill} className="badge bg-secondary fs-6 fw-normal me-2 mb-2 px-3 py-2" style={{ cursor: 'pointer' }}>
                       {skill}
                     </span>
                   ))}
@@ -182,23 +182,12 @@ const Experience = () => {
       <style>{`
         .experience-item {
           opacity: 0;
-          transform: translateY(20px); /* Start slightly below */
+          transform: translateY(20px);
           transition: opacity 0.6s ease-out, transform 0.6s ease-out;
         }
         .experience-item.is-visible {
           opacity: 1;
-          transform: translateY(0); /* Move to original position */
-        }
-        /* Optional: Adjust badge styling if needed */
-        .badge.bg-secondary {
-           background-color: #6c757d !important; /* Ensure Bootstrap color override if needed */
-           /* Add any other custom badge styles here */
-        }
-        h4 { /* Category titles */
-            text-transform: capitalize; /* Nicer formatting for category keys */
-            border-bottom: 2px solid #dee2e6; /* Optional underline */
-            padding-bottom: 0.5rem;
-            display: inline-block; /* Make underline fit text */
+          transform: translateY(0);
         }
       `}</style>
     </div>

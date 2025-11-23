@@ -4,9 +4,9 @@ const Contact = () => {
   const redirectUrl = "afe123x.netlify.app";
 
   return (
-    <section id="contact" className="py-5 vh-100">
+    <section id="contact" className="py-5">
       <div className="container">
-        <h2 className='text-center mb-4'>Contact Me</h2>
+        <h2 className='text-center mb-4' style={{ color: 'var(--text-primary)' }}>Contact Me</h2>
 
         <form action={formSubmitEndpoint} method="POST">
           {/* Name Field */}

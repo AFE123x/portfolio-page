@@ -4,11 +4,10 @@ function AppNavbar() { // Renamed to avoid conflict with Navbar component from r
     return (
         // Use react-bootstrap components
         <Navbar
-            className="fixed-top"
-            bg="light"          // Correct: Sets the background color
-            variant="light"     // Correct: Sets text/link colors for a light background (dark text)
+            className="fixed-top navbar-dark"
+            bg="dark"          // Sets the background color to dark
+            variant="dark"     // Sets text/link colors for a dark background
             expand="lg"
-         // light // Incorrect prop removed
         >
           <Container> {/* Optional: Use Container for proper alignment/padding */}
             <Navbar.Brand href="#">Arun Felix</Navbar.Brand>

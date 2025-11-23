@@ -94,22 +94,22 @@ const Projects = () => {
                   .project-card {
                     position: relative;
                     overflow: hidden;
-                    transition: transform 0.3s ease;
+                    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
                     text-decoration: none;
                     color: inherit;
                     display: block;
                   }
                   .project-card:hover {
-                    transform: scale(1.03);
-                    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+                    transform: translateY(-10px) scale(1.03);
+                    box-shadow: 0 15px 40px rgba(0, 212, 255, 0.3) !important;
                   }
                   .project-card .card-img-overlay {
                     position: absolute;
                     top: 0; left: 0; right: 0; bottom: 0;
-                    background-color: rgba(0, 0, 0, 0.7);
+                    background: linear-gradient(135deg, rgba(0, 212, 255, 0.95), rgba(124, 58, 237, 0.95)) !important;
                     color: white;
                     opacity: 0;
-                    transition: opacity 0.3s ease;
+                    transition: opacity 0.4s ease;
                     display: flex;
                     flex-direction: column;
                     justify-content: center;
@@ -122,14 +122,20 @@ const Projects = () => {
                   }
                   .project-card .card-title-static {
                      font-weight: bold;
+                     color: var(--text-primary) !important;
                   }
                   .project-card .card-img {
                      object-fit: cover;
                      height: 200px;
                      width: 100%;
+                     transition: transform 0.4s ease;
+                  }
+                  .project-card:hover .card-img {
+                     transform: scale(1.1);
                   }
                    .project-card .card-body {
                      padding: 0.5rem 1rem;
+                     background: var(--bg-secondary) !important;
                    }
                 `}
             </style>
@@ -139,14 +145,14 @@ const Projects = () => {
                 <h1 className="text-center mb-5">Projects</h1>
 
                 {/* Loading State */}
-                {loading && <p className="text-center">Loading projects from GitHub...</p>}
+                {loading && <p className="text-center" style={{ color: 'var(--text-secondary)' }}>Loading projects from GitHub...</p>}
 
                 {/* Error State */}
                 {error && <p className="text-center text-danger">Error loading projects: {error}</p>}
 
                 {/* Project Grid */}
                 {!loading && !error && (
-                    <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+                    <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 justify-content-center">
                         {projects.length > 0 ? (
                             projects.map((project) => (
                                 <div key={project.id} className="col">
@@ -174,7 +180,7 @@ const Projects = () => {
                         ) : (
                             // Show message if API returns projects but none match filters (or user has no public repos)
                              <div className="col-12">
-                                 <p className="text-center text-muted">No public projects found matching the criteria, or project details coming soon!</p>
+                                 <p className="text-center" style={{ color: 'var(--text-secondary)' }}>No public projects found matching the criteria, or project details coming soon!</p>
                              </div>
                         )}
                     </div>
@@ -182,7 +188,7 @@ const Projects = () => {
                  {/* Message if API fetch worked but returned zero projects */}
                  {!loading && !error && projects.length === 0 && (
                      <div className="col-12">
-                          <p className="text-center text-muted">No public projects found on GitHub.</p>
+                          <p className="text-center" style={{ color: 'var(--text-secondary)' }}>No public projects found on GitHub.</p>
                       </div>
                   )}
             </div>

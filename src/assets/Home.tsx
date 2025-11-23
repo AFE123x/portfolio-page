@@ -1,19 +1,21 @@
 import { ReactTyped } from "react-typed";
+import profileImage from "../1729830943671.jpeg";
+
 function Home() {
     const githubLink = "https://github.com/AFE123x";
     const linkedinLink = "https://linkedin.com/in/arun-felix-389b03231";
-    const profileImageUrl = "../1729830943671.jpeg";
+    const profileImageUrl = profileImage;
 
     return (
         <div className="row py-5 align-items-center min-vh-100" id="home">
-            <div className="col-lg-4 col-md-5 text-center mb-4 mb-md-0">
+            <div className="col-lg-4 col-md-5 text-center mb-4 mb-md-0" style={{ animation: 'slideInLeft 1s ease-out' }}>
                 <img
                     src={profileImageUrl}
                     className="img-fluid w-75 mx-auto d-block mb-3"
                     style={{ borderRadius: '50%', maxWidth: '250px' }}
                     alt="Profile picture of Arun Felix"
                 />
-                <h1 className="mb-3 text-center">Arun Felix</h1>
+                <h1 className="mb-3 text-center" style={{ color: 'var(--text-primary)' }}>Arun Felix</h1>
                 <div className="my-3">
                     <a href={githubLink} target="_blank" rel="noopener noreferrer" className="mx-2" aria-label="GitHub Profile">
                         <img src="https://upload.wikimedia.org/wikipedia/commons/9/91/Octicons-mark-github.svg" style={{ width: '30px', height: 'auto' }} alt="GitHub Icon" />
@@ -23,7 +25,7 @@ function Home() {
                     </a>
                 </div>
             </div>
-            <div className="col-lg-8 col-md-7 text-center"> {/* Removed text-md-start and ps-md-4, kept text-center */}
+            <div className="col-lg-8 col-md-7 text-center" style={{ animation: 'slideInRight 1s ease-out' }}> {/* Removed text-md-start and ps-md-4, kept text-center */}
                 <ReactTyped
                     // Add a font-size or display class here. fs-3 or display-4 are examples.
                     // Choose the size that fits your design.
