@@ -15,10 +15,10 @@ function Home() {
                     style={{ borderRadius: '50%', maxWidth: '250px' }}
                     alt="Profile picture of Arun Felix"
                 />
-                <h1 className="mb-3 text-center" style={{ color: 'var(--text-primary)' }}>Arun Felix</h1>
+                <h1 className="mb-3 text-center" style={{ color: '#ffffff' }}>Arun Felix</h1>
                 <div className="my-3">
                     <a href={githubLink} target="_blank" rel="noopener noreferrer" className="mx-2" aria-label="GitHub Profile">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/9/91/Octicons-mark-github.svg" style={{ width: '30px', height: 'auto' }} alt="GitHub Icon" />
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/9/91/Octicons-mark-github.svg" style={{ width: '30px', height: 'auto', filter: 'invert(1) brightness(1.2)' }} alt="GitHub Icon" />
                     </a>
                     <a href={linkedinLink} target="_blank" rel="noopener noreferrer" className="mx-2" aria-label="LinkedIn Profile">
                         <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/81/LinkedIn_icon.svg/1024px-LinkedIn_icon.svg.png" style={{ width: '30px', height: 'auto' }} alt="LinkedIn Icon" />
@@ -33,9 +33,9 @@ function Home() {
                     // OR className="display-4" // Example: Using a larger display heading class
                     // Removed text-right
                     strings={[
-                        "Full Stack Developer",
                         "Software Engineer",
-                        "Embedded Systems Engineer",
+                        "Vehicle Software Engineer",
+                        "Embedded Software Engineer",
                     ]}
                     typeSpeed={40}
                     backSpeed={50}

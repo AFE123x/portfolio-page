@@ -1,24 +1,85 @@
-import { Navbar, Nav, Container } from 'react-bootstrap'; // Import necessary components
+import { useState, useEffect } from 'react';
+import { Navbar, Nav, Container } from 'react-bootstrap';
 
-function AppNavbar() { // Renamed to avoid conflict with Navbar component from react-bootstrap
+function AppNavbar() {
+    const [activeSection, setActiveSection] = useState('home');
+
+    useEffect(() => {
+        const handleScroll = () => {
+            const sections = ['home', 'experience', 'project', 'contact'];
+            const scrollPosition = window.scrollY + 150;
+
+            for (const section of sections) {
+                const element = document.getElementById(section);
+                if (element) {
+                    const { offsetTop, offsetHeight } = element;
+                    if (scrollPosition >= offsetTop && scrollPosition < offsetTop + offsetHeight) {
+                        setActiveSection(section);
+                        break;
+                    }
+                }
+            }
+        };
+
+        window.addEventListener('scroll', handleScroll);
+        handleScroll(); // Check on mount
+        return () => window.removeEventListener('scroll', handleScroll);
+    }, []);
+
+    const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, targetId: string) => {
+        e.preventDefault();
+        const element = document.getElementById(targetId);
+        if (element) {
+            const offsetTop = element.offsetTop - 80;
+            window.scrollTo({
+                top: offsetTop,
+                behavior: 'smooth'
+            });
+        }
+    };
+
     return (
-        // Use react-bootstrap components
         <Navbar
             className="fixed-top navbar-dark"
-            bg="dark"          // Sets the background color to dark
-            variant="dark"     // Sets text/link colors for a dark background
+            bg="dark"
+            variant="dark"
             expand="lg"
         >
-          <Container> {/* Optional: Use Container for proper alignment/padding */}
-            <Navbar.Brand href="#">Arun Felix</Navbar.Brand>
-            <Navbar.Toggle aria-controls="basic-navbar-nav" /> {/* No data-* attributes needed */}
-            <Navbar.Collapse id="basic-navbar-nav"> {/* ID is linked by aria-controls */}
-              {/* Note: For right alignment in Bootstrap 5+, use ms-auto (margin-start: auto) */}
-              <Nav className="ms-auto"> {/* Use Nav component, ms-auto for right align */}
-                <Nav.Link href="#home" active>Home</Nav.Link> {/* Use Nav.Link, 'active' prop */}
-                <Nav.Link href="#experience">Experience</Nav.Link>
-                <Nav.Link href="#project">Projects</Nav.Link>
-                <Nav.Link href="#contact">Contact</Nav.Link>
+          <Container>
+            <Navbar.Brand href="#home" onClick={(e) => handleNavClick(e as any, 'home')}>
+              <span className="brand-text">Arun Felix</span>
+            </Navbar.Brand>
+            <Navbar.Toggle aria-controls="basic-navbar-nav" />
+            <Navbar.Collapse id="basic-navbar-nav">
+              <Nav className="ms-auto">
+                <Nav.Link 
+                  href="#home" 
+                  className={activeSection === 'home' ? 'active' : ''}
+                  onClick={(e) => handleNavClick(e as any, 'home')}
+                >
+                  Home
+                </Nav.Link>
+                <Nav.Link 
+                  href="#experience"
+                  className={activeSection === 'experience' ? 'active' : ''}
+                  onClick={(e) => handleNavClick(e as any, 'experience')}
+                >
+                  Experience
+                </Nav.Link>
+                <Nav.Link 
+                  href="#project"
+                  className={activeSection === 'project' ? 'active' : ''}
+                  onClick={(e) => handleNavClick(e as any, 'project')}
+                >
+                  Projects
+                </Nav.Link>
+                <Nav.Link 
+                  href="#contact"
+                  className={activeSection === 'contact' ? 'active' : ''}
+                  onClick={(e) => handleNavClick(e as any, 'contact')}
+                >
+                  Contact
+                </Nav.Link>
               </Nav>
             </Navbar.Collapse>
           </Container>
