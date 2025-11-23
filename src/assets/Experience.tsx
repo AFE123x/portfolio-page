@@ -41,13 +41,13 @@ const skillsData: SkillData = { // Add type annotation
 const experiences: ExperienceData[] = [ // Add type annotation (array of ExperienceData)
   {
     id: 1,
-    title: 'Vehicle Firmware Engineer (incoming)',
+    title: 'Vehicle Firmware Engineer - Audio System',
     company: 'Tesla',
     location: 'Palo Alto - CA',
     startDate: 'September 2025',
     endDate: 'Present',
     description: [
-      '- incoming'
+      '- TBA',
     ],
   },
   {
@@ -56,7 +56,7 @@ const experiences: ExperienceData[] = [ // Add type annotation (array of Experie
     company: 'Rutgers University',
     location: 'Piscataway, NJ',
     startDate: 'January 2024',
-    endDate: 'Present',
+    endDate: 'May, 2025',
     description: [
       '- Supported the instructor in course development by creating assignments, leading weekly recitations, and grading student work.',
       '- Facilitated and encouraged student discussions to enhance classroom engagement and understanding.',
