@@ -1,8 +1,10 @@
 import { useState, useEffect } from 'react';
 import Navbar from './assets/Navbar'
 import Home from   './assets/Home'
+import About from './assets/About';
 import Experience from './assets/Experience';
 import Projects from './assets/Projects';
+import Interests from './assets/Interests';
 import Contact from './assets/Contact';
 
 function App() {
@@ -60,8 +62,10 @@ function App() {
       
       <Navbar/>
       <Home/>
+      <About/>
       <Experience/>
       <Projects/>
+      <Interests/>
       <Contact/>
       
       {/* Scroll to Top Button */}

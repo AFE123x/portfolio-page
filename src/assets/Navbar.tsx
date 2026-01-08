@@ -6,7 +6,7 @@ function AppNavbar() {
 
     useEffect(() => {
         const handleScroll = () => {
-            const sections = ['home', 'experience', 'project', 'contact'];
+            const sections = ['home', 'about', 'experience', 'project', 'interests', 'contact'];
             const scrollPosition = window.scrollY + 150;
 
             for (const section of sections) {
@@ -60,6 +60,13 @@ function AppNavbar() {
                   Home
                 </Nav.Link>
                 <Nav.Link 
+                  href="#about"
+                  className={activeSection === 'about' ? 'active' : ''}
+                  onClick={(e) => handleNavClick(e as any, 'about')}
+                >
+                  About
+                </Nav.Link>
+                <Nav.Link 
                   href="#experience"
                   className={activeSection === 'experience' ? 'active' : ''}
                   onClick={(e) => handleNavClick(e as any, 'experience')}
@@ -72,6 +79,13 @@ function AppNavbar() {
                   onClick={(e) => handleNavClick(e as any, 'project')}
                 >
                   Projects
+                </Nav.Link>
+                <Nav.Link 
+                  href="#interests"
+                  className={activeSection === 'interests' ? 'active' : ''}
+                  onClick={(e) => handleNavClick(e as any, 'interests')}
+                >
+                  Interests
                 </Nav.Link>
                 <Nav.Link 
                   href="#contact"
